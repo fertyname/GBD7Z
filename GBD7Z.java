@@ -350,10 +350,15 @@ public class GBD7Z {
      if (o == null) throw new NullPointerException(name + " is null");
  }
  
- static Scanner scanner = new Scanner(System.in);
  public static void main(String[] args) throws Exception {
-	 System.out.println("Сообщение для шифрования:");
-     test(scanner.nextLine(), "abcde123456789");
+	try (Scanner scanner = new Scanner(System.in)) {
+		System.out.println("Сообщение для шифрования:");
+		 String text = scanner.nextLine();
+		 
+		 System.out.println("Ключ для шифрования: ");
+		 String key = scanner.nextLine();
+		 test(text, key);
+	}
  }
 
  private static void test(String plain, String keyStr) throws Exception {
